@@ -1,0 +1,9 @@
+sizeMicronXY	200,200
+intervalMicronXY	100,100
+resizePixelXY	128,128
+loadInfosPath	infoPack_0.dump
+numImage	32000
+numBatch	32
+numCycle	1
+learningRate	0.0001
+modelPath	modelCNN.pt

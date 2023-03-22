@@ -1,0 +1,6 @@
+sizeMicronXY	200,200
+intervalMicronXY	100,100
+resizePixelXY	128,128
+saveAnalyPath	analysis/results_0/
+loadInfosPath	infoPack_0.dump
+loadLabelPath	resultsMIL_0.dump

@@ -1,0 +1,4 @@
+saveLabelPath	resultsMIL_0.dump
+numCycle	10
+learningRate	0.001
+modelPath	modelMIL.pt
