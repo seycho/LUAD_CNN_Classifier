@@ -121,7 +121,7 @@ def main():
         labelConfMatxDic[_type].append(correctMILDic[_code])
 
     for _key in codeConfMatxDic.keys():
-        idxList = np.array(labelConfMatxDic[_key]).max(1).argsort()[:64]
+        idxList = np.array(labelConfMatxDic[_key]).max(1).argsort()[-64:]
         plt.figure(figsize=(9, 9))
         plt.suptitle(_key)
         for _idx in range(64):
@@ -151,6 +151,7 @@ def main():
                       ])
     np.savetxt(os.path.join(saveAnalyPath, "statistical.txt"), record, fmt="%s", delimiter="\t")
     print("  Analysis datas are saved %s."%saveAnalyPath)
+    print()
 
     return None
 

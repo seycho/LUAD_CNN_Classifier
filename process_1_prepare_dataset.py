@@ -106,6 +106,7 @@ def main():
     infoPack = {"code" : packCode, "label" : packLabel}
     pickle.dump(infoPack, open(saveInfosPath, "wb"))
     print("  Patch image data file is saved %s."%saveInfosPath)
+    print()
 
     return None
 

@@ -2,6 +2,6 @@ sizeMicronXY	200,200
 intervalMicronXY	100,100
 resizePixelXY	128,128
 numThread	16
-saveInfosPath	infoPack_0.dump
+saveInfosPath	infoPack_9.dump
 loadInfosPath	infoPack_0.dump
-refLabelPath	resultsMIL_-1.dump
+refLabelPath	resultsMIL_8.dump

@@ -26,10 +26,10 @@ def main():
     var2["intervalMicronXY"] =  "100,100"
     var2["resizePixelXY"] = "128,128"
     var2["loadInfosPath"] = var1["saveInfosPath"]
-    var2["numImage"] = "32000"
+    var2["numImage"] = "16000"
     var2["numBatch"] = "32"
-    var2["numCycle"] = "1"
-    var2["learningRate"] = "0.0001"
+    var2["numCycle"] = "4"
+    var2["learningRate"] = "0.00002"
     var2["modelPath"] = "modelCNN.pt"
     np.savetxt("variable_2_CNN_training.tsv", np.array(list(var2.items())), fmt="%s", delimiter="\t")
     print("  Process 2 variables text file is saved variable_2_CNN_training.tsv")

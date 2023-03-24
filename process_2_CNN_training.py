@@ -121,10 +121,10 @@ def main():
     if "cuda" in deviceName:
         os.environ['CUDA_LAUNCH_BLOCKING'] = deviceName.split(':')[-1]
 
-    modelCNN = torchvision.models.efficientnet_v2_s(pretrained=True)
+    modelCNN = torchvision.models.efficientnet_v2_s(weights="EfficientNet_V2_S_Weights.DEFAULT")
     classifier = torch.nn.Sequential(torch.nn.Dropout(p=0.2, inplace=True),
                                      torch.nn.Linear(in_features=1280, out_features=2, bias=True),
-                                     torch.nn.Softmax())
+                                     torch.nn.Softmax(1))
     modelCNN.classifier = classifier
     if os.path.isfile(modelPath):
         print("    Load CNN model parameters.")
@@ -142,7 +142,7 @@ def main():
         for i in range(label.shape[1]):
             idxRand.append(np.random.choice(idxList[i], numImage))
 
-        patchInfos = {"code" : code[np.hstack(idxRand)][:640], "label" : label[np.hstack(idxRand)][:640]}
+        patchInfos = {"code" : code[np.hstack(idxRand)], "label" : label[np.hstack(idxRand)]}
         dataClassCycle = DatasetClassWSI(patchImporterDic, patchInfos, transformTensor)
         dataLoaderCycle = DataLoader(dataClassCycle, batch_size=numBatch, shuffle=True, drop_last=False, num_workers=4)
 
@@ -155,11 +155,13 @@ def main():
     modelCNN.classifier = torch.nn.Sequential()
 
     patchInfos = {"code" : code, "label" : label}
+    #patchInfos = {"code" : np.random.permutation(code)[:1280], "label" : np.random.permutation(label)[:1280]}
     dataClassAll = DatasetClassWSI(patchImporterDic, patchInfos, transformTensor)
     dataLoaderAll = DataLoader(dataClassAll, batch_size=numBatch, shuffle=False, drop_last=False, num_workers=4)
 
     MakeInstance(modelCNN, classifier, dataLoaderAll, device)
     print("  Instance data file is saved instanceCNN.dump.")
+    print()
 
     return None
 

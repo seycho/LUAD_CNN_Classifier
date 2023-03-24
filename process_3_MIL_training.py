@@ -46,8 +46,8 @@ class BClassifier(nn.Module):
 def TrainModel(model, instance, criterion, optimizer, num):
 
     for _type in instance.keys():
-        resultTensor = torch.Tensor(instance[_type]["result"])
-        instanceTensor = torch.Tensor(instance[_type]["instance"])
+        resultTensor = torch.Tensor(np.array(instance[_type]["result"]))
+        instanceTensor = torch.Tensor(np.array(instance[_type]["instance"]))
 
         results, label, _ = model(instanceTensor, resultTensor)
 
@@ -69,8 +69,10 @@ def MakeResult(model, instance):
     correctMILDic = {}
     for _type in instance.keys():
         code = instance[_type]["code"]
-        resultTensor = torch.Tensor(instance[_type]["result"])
-        instanceTensor = torch.Tensor(instance[_type]["instance"])
+        resultArray = np.array(instance[_type]["result"])
+        instanceArray = np.array(instance[_type]["instance"])
+        resultTensor = torch.Tensor(resultArray)
+        instanceTensor = torch.Tensor(instanceArray)
 
         results, label, _ = model(instanceTensor, resultTensor)
 
@@ -113,6 +115,7 @@ def main():
     correctMILDic = MakeResult(modelMIL, instanceCNN)
     pickle.dump(correctMILDic, open(saveLabelPath, "wb"))
     print("  Results file is saved %s."%saveLabelPath)
+    print()
 
     return None
 
