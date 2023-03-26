@@ -1,0 +1,12 @@
+imagecodecs
+matplotlib
+numpy
+opencv-python
+openslide-python
+scikit-learn
+PyMySQL[rsa]
+pyparsing
+tifffile
+torch
+torchvision
+torchaudio

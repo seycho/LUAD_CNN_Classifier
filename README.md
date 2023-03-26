@@ -1,5 +1,7 @@
 # Whole Slide Image (WSI) Lung Adenocarcinoma (LUAD) MIL Learning
-
+   
+Semi-Supervised Learning about Adenocarcinoma diagnosis.   
+And also re-training CNN model, expecting to get better diagnostic label and instance data.   
 ![image](./readme_image/learning_process.png)   
 1. Make patch image informations and save as pickle file.   
 2. Train positive or negative diagnosis CNN model saved patch image information.   
@@ -50,5 +52,5 @@ python organization_analysis_results.py
    
 Simple auto run script using upper entire process.   
 ```bash
-auto_cycle.sh
+bash auto_cycle.sh
 ```
